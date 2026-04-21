@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "CardTrader Assistant",
+  "version": "1.0.0",
+  "description": "Confronta ordini e wishlist su CardTrader, categorizza le carte per persona.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.cardtrader.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.cardtrader.com/*"],
+      "js": ["src/content.js"],
+      "css": ["src/overlay.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
